@@ -1,0 +1,44 @@
+Value stored in G: 0xEB i.e. 1110 1011 in binary.
+
+(a) 
+
+During run of the program using test input t1 the exact visit count of the branch-pair (i.e., before rounding) is 16. 
+So, the value in shm will be: 0010 0000 (after round - off). Note that value 16 is rounded off to 32 i.e. 2^5 according to roundOff() function.
+
+In this case the shm and G both are > 0 (corresponding to the considered branch pair). So, updated G will be:
+G_updated 	= G & negation(shm)
+		= (1110 1011) & negation(0010 0000)
+		= (1110 1011) & (1101 1111)
+		= (1100 1011) in binary
+		= (CB) in hexa-decimal
+
+So, YES, the test input t1 will be added to the Q. Updated entry in G would be CB (in hexa-decimal).
+
+(b) 
+
+Current value of G corresponing to the branch pair is: (1100 1011) in binary
+
+The smallest exact value of visit count of the branch pair by t2 that would cause t2 to be not added to Q is 3. (Non-zero value)
+In this case: rounded off value corresponding to branch pair in shm would be: 0000 0100 (3 is rounded off to 4 i.e. 2^2 according to roundOff() function)
+
+G_updated 	= G & negation(shm)
+		= (1100 1011) & negation(0000 0100)
+		= (1100 1011) & (1111 1011)
+		= (1100 1011)
+		= G (current)
+
+Also, notice, Here G & shm = (1100 1011) & (0000 0100) = (0000 0000)
+So, G != 255 and (G & shm) = 0. In this scenario isInterestingTestCase(t, shm) will return false.
+
+So, G won't be updated in this case and t2 won't be added to Q.
+
+The smallest exact value of visit count of the branch pair by t2 that would cause t2 to be added to Q is 1. (Non-zero value)
+In this case: rounded off value corresponding to branch pair in shm would be: 0000 0001 (1 is rounded off to 1 i.e. 2^0 according to roundOff() function)
+
+G_updated 	= G & negation(shm)
+		= (1100 1011) & negation(0000 0001)
+		= (1100 1011) & (1111 1110)
+		= (1100 1010) in binary
+		= (CA) in hexa-decimal
+
+So, G will be updated in this case, coverage will be updated and t2 will be added to Q.

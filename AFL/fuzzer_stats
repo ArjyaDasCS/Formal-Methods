@@ -1,0 +1,27 @@
+start_time        : 1650563083
+last_update       : 1650563206
+fuzzer_pid        : 38
+cycles_done       : 5
+execs_done        : 83197
+execs_per_sec     : 665.24
+paths_total       : 20
+paths_favored     : 2
+paths_found       : 19
+paths_imported    : 0
+max_depth         : 3
+cur_path          : 18
+pending_favs      : 0
+pending_total     : 4
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 0.02%
+unique_crashes    : 0
+unique_hangs      : 0
+last_path         : 1650563205
+last_crash        : 0
+last_hang         : 0
+execs_since_crash : 83197
+exec_timeout      : 20
+afl_banner        : fcw
+afl_version       : 2.35b
+command_line      : ./afl-fuzz -i whileIn -o whileOut ./fcw

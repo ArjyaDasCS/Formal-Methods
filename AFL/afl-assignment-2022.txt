@@ -1,0 +1,122 @@
+AFL Assignment 2022
+Due date: Apr. 22nd 11.59 pm
+
+Before attempting the assignment, fimilarize yourself with running AFL. Use
+only the AFL version provided to you on the course web page (in
+mafl-2.35b). Follow the instructions for running the AFL tools from the
+READEME.txt on the course web site.
+
+Another important point is to familiarize yourself with assembly
+language. Look at the assembly language file and the
+assembly-program-in-brief.s file provided on the course web site, and
+convince yourself that assembly-program-in-brief.s is a faithful outline of
+the assembly language file. Also understand how these two files correlate
+with the source code. In this assignment you are not going to need to look
+at the assembly language file of any new program, but in the exam you will
+need to do this. In the exam you will need to compile a (given) new program
+using afl-gcc and you will need to understand the assembly file that gets
+generated. You will not be provided the corresponding "in brief" outline
+file in the exam, you will need to make it yourself. Therefore, do get a
+feel for how to construct such an outline file. You will not need to
+understand every kind of instruction in the assembly language. However, you
+will need to recognize conditional jumps and unconditional jumps, calls to
+the trampoline, and assignments to current_random and prev_random in the
+assembly file.
+
+Your solution to the assignment should be a single zip file named
+<your-name>.zip. The zip file should contain the items mentioned below. 
+
+1. Run afl-fuzz on the for-class-while program given in the course web
+   site, using a seed file that contains two bytes. The specific two bytes
+   that each of you should use is given at the end of this doc. Run the
+   fuzzer for 1 hour or until 20 test inputs are retained (including the
+   seed), whichever happens earlier.
+
+   Include a file queue.zip in your solution, which should be a zip of the
+   "queue" folder produced by afl-fuzz.
+
+   Include in your solution the "fuzzer_stats" file emitted by afl-fuzz. 
+
+   Consider the test input files in the "queue" folder in increasing order
+   of the IDs in the test input file names.  Include a file
+   "test-inputs-analysis.txt" or "test-inputs-analysis.doc" in your
+   solution. In this file, for each test-input file, provide all the
+   following information.
+
+   a) The full name of the test input file.
+
+   b) The contents of the test input file. Use "?" to represent any
+      unprintable character (and to represent the printable character
+      "?"). 
+
+   c) The name(s) of the parent test input file(s) (the seed input will not
+      have a parent).
+
+   d) The entire contents of the Table.txt file emitted by the script
+      xor.py for this test input. However, you need to make some changes to
+      Table.txt after it is emitted by xor.py. (a) Remove the column "Table
+      index". (b) Replace the hex values in the columns "Prev Random" and
+      "Curr Random" with their corresponding trampoline IDs (A, B, C, etc.)
+      as given in the assembly-program-in-brief.s file in the course web
+      site.
+
+   e) Indicate which branch pair(s) (if any) are visited for the first time
+      by this test input (i.e., not visited at all by any of the previously
+      retained test inputs).
+
+   f) In case this test input did not visit any new branch-pair
+      that was not visited by any previously retained test inputs,
+      then indicate the branch pair(s) that caused this test input to be
+      retained.
+
+   The wording below is CANCELED:
+
+   f) Indicate which branch pair(s) (if any) are not visited for the first
+      time by this test input, but have a visit count that is different
+      from visit counts achieved by previously retained test inputs. Recall
+      that all visit-counts reported by showmap are directly from the Shm
+      data structure, which contains visit counts rounded to powers of 2.
+
+2. This problem is a pen-and-paper problem, and is based on the AFL fuzzer
+   pseudo-code taught in class and provided on the course web site. For
+   simplicity assume that the program being tested has only one branch
+   pair. Hence, the arrays G and Shm have only one entry (consisting of a
+   single byte). Say at some point of the run of afl-fuzz the value in G is
+   0xEB.
+
+   (a) Say a run of the program on a test input t1 occurs now, and the
+       exact visit count of the branch-pair in this run (i.e., before
+       rounding) is 16. Would this test input t1 be added to the queue Q or
+       not? Justify your answer by showing the necessary calculations. If
+       it would be added to Q, what would be the updated entry in G? (You
+       can ignore the array R for this problem.)
+
+   (b) Consider the next test input t2. What is the smallest (exact) visit
+       count of the branch pair by t2 that would cause t2 to be not added
+       to Q, and what is the smallest (exact) visit count of the branch
+       pair by t2 that would cause t2 to be added to Q? Justify your
+       answer. 
+
+   Provide your answer in a text file named Problem2.txt.
+   
+
+Seed file contents:
+
+  Awinashe Saurabh:         sa
+  Bahuguna, Ayush:          ay
+  Das Prasad, Dhurjati:     dh
+  Das, Arjya:               ar
+  Ghosh, Anurita:           an
+  Kumar, Himanshu:          hi
+  Kurani, Ankit:            ak
+  Negi, Sneha:              sn
+  Pawar, Jaydeep:           ja
+  Pendela, Harshitha:       ha
+  Prasad, Rohit:            ro
+  R A, Prajwal:             pr
+  Ravishankar, Aditya:      ad
+  Salmalge, Shreya:         sh
+  Sati, Mayank:             ms
+  Shah, Aakash:             as
+  Shankhapal, Mehul:        me
+  Thakkar, Arkesh           ak
