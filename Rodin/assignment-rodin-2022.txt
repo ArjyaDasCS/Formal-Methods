@@ -1,0 +1,70 @@
+Assignment 3 (Refinement/Rodin)
+
+Due on Thu 24 February 2022.
+
+Note: 
+
+1. Please go through the Rodin User's Handbook ("rodin-doc.pdf") on
+the course page. Section 2.5 on "Mathematical Notation" in Rodin will
+be helpful.
+
+2. Export your project as a zipped archive and submit on Teams.
+
+
+Q1. This question asks you to verify the functional correctness of a
+virtual memory scheme implemented by an operating system. In a virtual
+memory system, each process sees a "virtual" address space (in this
+case of 1024 bytes, with each byte being an addressable word of
+memory), even though there is a common physical memory shared by the
+processes. The operating system and the processor (through its Memory
+Management Unit or MMU) orchestrate this view by setting up a page
+table for each process, which maps its virtual memory addresses to
+physical memory addresses. The read and write operations now read and
+write the physical memory, while translating addresses using the
+appropriate page table. In the present problem, we have two processes
+("P1" and "P2"), and a physical memory of 2048 bytes. The OS sets the
+page table of P1 to map all addresses to even-numbered addresses in
+physical memory, and similarly for P2 to all odd-numbered addresses in
+physical memory. You need to verify the correctness of this virtual
+memory system by:
+
+(a) Specifying an abstract system (or machine) called "memory",
+
+(b) Specifying a concrete system called "memoryMMU" which models the
+virtual memory system; and
+
+(c) Proving that the concrete system refines the abstract.
+
+The abstract system "memory" has two processes, each with its
+dedicated virtual memory space "vmem1" and "vmem2" respectively.
+The operation "read1" (for the read operation from process P1) takes
+an address "a" in 0..1023 and returns the integer value stored in
+vmem1(a). Similarly the operation "write1" takes an address "a" in
+0..1023, and an integer value "val", and replaces the contents of
+vmem1(a) by val.
+
+The concrete system "memoryMMU" uses page tables and an MMU to translate
+virtual addresses to physical ones. It has a physical memory "pmem" of
+size 2048 bytes. Each process has a page table ("ptable1" and "ptable2")
+which maps the virtual addresses to physical ones. The operations
+"read1", "write1", etc now read and write the physical memory using
+the page tables to translate addresses.
+
+Use Rodin to show that "memoryMMU" refines "memory". You can use the
+built-in Event-B notion of refinement in Rodin.
+
+In particular you must do the following steps. The given zip file
+"virtual-memory.zip" (linked on the course page) contains two machines
+"memory" and "memoryMMU".
+
+(a) Complete the two models to add the "write 1", "read2" and "write2"
+operations.
+
+(b) Add any additional state invariants you may need in the two machines.
+
+(c) Add the gluing relation (call the invariants "glue1", "glue2"
+etc) in memoryMMU.
+
+(d) Discharge the resulting proof obligations in Rodin. If you cannot
+discharge them automatically, give a justification for why you think
+are logically valid.
