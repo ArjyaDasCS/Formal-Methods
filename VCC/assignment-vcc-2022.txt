@@ -1,0 +1,110 @@
+FMSE Assignment 4 (VCC)
+-----------------------
+
+Total Marks: 50
+Due on Fri 18 March 2022.
+
+Submit all your answers in a single text file.
+
+Q1. Consider the program below: [15 marks]
+
+int x = 0;
+int y = 1;
+while (y < 1000)
+{
+  x = x + y;
+  y = y + 1;
+}
+// post: y < x
+
+(a) Write out the verification conditions (VCs) that a candidate
+invariant inv(x,y) must satisfy for it to be an adequate inductive
+invariant for this program and specification.
+
+(b) Verify the program in VCC. You may ignore the overflow warning --
+i.e. treat the ints as unbounded integers and operations on them
+as mathematical arithmetic operations).
+
+(c) Verify the program with the usual bounded integer semantics of C
+(i.e. address the overflow warning of VCC).
+
+
+Q2. Verify the following contract for the function "div" in VCC. The
+function does integer division of x by d, by repeated subtraction. The
+quotient and remainder are returned in the unsigned ints pointed to by
+q and r respectiveley. [10 marks]
+
+void div(unsigned x, unsigned d, unsigned *q, unsigned *r)
+_(requires d > 0 && q != r)
+_(ensures x == d * (*q) + *r && *r < d)
+{
+  unsigned lq, lr;
+  lq = 0;
+  lr = x;
+  while(lr >= d) 
+  {
+    lq++;
+    lr = lr - d;
+  }
+  *q = lq;
+  *r = lr;
+  return;
+}
+
+Q3. Annotate the following "arraymax" function with a contract that
+says that the function does indeed return the maximum value in the
+array, and verify it in VCC. [10 marks]
+
+int arraymax (int *A, unsigned len)
+{
+  unsigned i = 0;
+  int max = INT_MIN;
+  while (i < len)
+  {
+    if (A[i] > max)
+      max = A[i];
+    i++;
+  }
+}
+ 
+
+Q4. This question is similar to the midsem question which asked you to
+verify the correctness of an integer counter which uses 2's complement
+representation for integers. Assuming a width of 8 bits, the 2's
+complement representation stores an unsigned 8-bit number "unum",
+whose value ranges between 0 to 255, to represent a signed integer in
+the range [-128,127]. A value of unum between 0 and 127 (inclusive)
+represents a non-negative integer of the same magnitude, while a value
+between 128 and 255 represents a negative integer whose magnitude is
+the complement of unum in 256 (i.e. its magnitude is 256 -
+unum). [Marks 15]
+
+Below is the code of the concrete 2's complement based counter:
+
+unsigned int unum;
+
+void init()
+{
+  unum = 0;
+}
+
+void inc()
+{
+  if (unum == 255)
+    unum = 0;
+  else
+    unum++;
+}
+
+void dec()
+{
+  ...
+}
+
+Complete the implementation of the decrement operation.  Write an
+abstract implementation of the counter which uses a ghost \integer
+variable called "intval". Give the combined functions for init, inc
+and dec, along with invariants and gluing relation to phrase the
+refinement conditions for the Rodin-style notion of refinement, and
+verify them in VCC. It is enough to submit just the combined
+functions and the annotations.
