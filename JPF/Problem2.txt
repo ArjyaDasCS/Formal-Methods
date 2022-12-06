@@ -1,0 +1,13 @@
+Line number 5-8 checks if the length of the length linked list is 2 and if it indeed 2 then it terminates the function.
+
+If those lines are removed then due to the assignment statement of line number 9 and the conditions mentioned in the while loop
+JPF runs forever. The argument 'n' of type NodeSimple is symbolically denoted by 'n1'. As, 'curr' is assigned initially by 'n', it is
+also symbolically denoted by 'n1'. As, mentioned in the while condition, JPF continuously checks which node 'curr' ('n1') and 
+'curr.next' ('n1.next') points to (stores). Due to the statement at line number 9, the linked list continuously iterates and JPF
+checks the validity of while condition forever (as JPF considers all possible locations a pointer variable can point to, unlike the 
+actual concrete execution of a program). 
+Example: after second iteration (if we remove line 5-8): JPF will check what 
+'n1.next.next.next' will point and will consider the values 'null', 'n1', 'n1.next', 'n1.next.next', or fresh location (value). 
+In next iteration JPF  will check what 'n1.next.next.next.next' will point and will consider the values 
+'null', 'n1', 'n1.next', 'n1.next.next', 'n1.next.next.next' or fresh location (value). 
+That's why lines 5-8 are needed to terminate the symbolic execution of the program.

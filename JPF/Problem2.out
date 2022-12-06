@@ -1,0 +1,247 @@
+Running Symbolic PathFinder ...
+symbolic.dp=choco
+symbolic.string_dp_timeout_ms=0
+symbolic.string_dp=none
+symbolic.choco_time_bound=30000
+symbolic.max_pc_length=2147483647
+symbolic.max_pc_msec=0
+symbolic.bvlength=32
+symbolic.min_int=-2147483648
+symbolic.min_long=-9223372036854775808
+symbolic.min_short=-32768
+symbolic.min_byte=-128
+symbolic.min_char=0
+symbolic.max_int=2147483647
+symbolic.max_long=9223372036854775807
+symbolic.max_short=32767
+symbolic.max_byte=127
+symbolic.max_char=65535
+symbolic.min_double=4.9E-324
+symbolic.max_double=1.7976931348623157E308
+----------------------------------- search started
+      [skipping static init instructions]
+JavaPathfinder core system v8.0 - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+symbolicheap.LinkedList.main()
+
+====================================================== search started: 10/4/22 6:23 PM
+		 # choice: gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"ROOT" ,1/1,isCascaded:false}
+		 # exposed java.lang.Boolean@bc through exposed java.lang.Boolean
+		 # exposed java.lang.Boolean@bd through exposed java.lang.Boolean
+		 # exposed java.lang.Class@17 through exposed java.lang.Boolean
+		 # exposed java.lang.Class@29 through exposed java.lang.Short
+		 # exposed java.lang.Class@2f through exposed java.lang.Integer
+		 # exposed java.lang.Class@35 through exposed java.lang.Long
+		 # exposed java.lang.Class@3b through exposed java.lang.Float
+		 # exposed java.lang.Class@41 through exposed java.lang.Double
+		 # exposed java.lang.Class@1d through exposed java.lang.Byte
+		 # exposed [Ljava.io.ObjectStreamField;@d3 through exposed java.lang.String
+		 # exposed java.lang.String$CaseInsensitiveComparator@da through exposed java.lang.String
+		 # exposed java.lang.Thread$State@db through exposed java.lang.Thread$State
+		 # exposed java.lang.Thread$State@de through exposed java.lang.Thread$State
+		 # exposed java.lang.Thread$State@e1 through exposed java.lang.Thread$State
+		 # exposed java.lang.Thread$State@e4 through exposed java.lang.Thread$State
+		 # exposed java.lang.Thread$State@e7 through exposed java.lang.Thread$State
+		 # exposed java.lang.Thread$State@ea through exposed java.lang.Thread$State
+		 # exposed [Ljava.lang.Thread$State;@f0 through exposed java.lang.Thread$State
+		 # exposed gov.nasa.jpf.ConsoleOutputStream@f4 through exposed java.lang.System
+		 # exposed gov.nasa.jpf.ConsoleOutputStream@f5 through exposed java.lang.System
+		 # exposed java.util.Properties@106 through exposed java.lang.System
+		 # exposed [Ljava.util.Hashtable$Entry;@149 through exposed java.util.Properties@106
+		 # exposed sun.misc.Unsafe@15a through exposed sun.misc.Unsafe
+		 # exposed java.lang.System$1@153 through exposed sun.misc.SharedSecrets
+            [symbolicheap/LinkedList.java:23] : NodeSimple n = new NodeSimple(5);
+            [symbolicheap/NodeSimple.java:29] : public NodeSimple(int x) {
+            [symbolicheap/NodeSimple.java:30] : elem = x;
+            [symbolicheap/NodeSimple.java:31] : next = null;
+            [symbolicheap/NodeSimple.java:32] : }
+            [symbolicheap/LinkedList.java:23] : NodeSimple n = new NodeSimple(5);
+            [symbolicheap/LinkedList.java:24] : test5(n);
+New sym int n_1_SYMREF min=-2147483648, max=2147483647
+            [symbolicheap/LinkedList.java:7] : int len = 0;
+            [symbolicheap/LinkedList.java:8] : NodeSimple curr = n;
+		 # garbage collection
+----------------------------------- [1] forward: 0 new
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..1,delta=+1,cur=0]
+ALOAD pcHeap: constraint # = 1
+n_1_SYMREF == CONST_-1
+            [symbolicheap/LinkedList.java:8] : NodeSimple curr = n;
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [2] forward: 1 new end
+----------------------------------- [1] backtrack: 0
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..1,delta=+1,cur=1]
+New sym int n_1_SYMREF min=-2147483648, max=2147483647
+New sym int n_1_SYMREF.elem min=-2147483648, max=2147483647
+New sym int n_1_SYMREF.next min=-2147483648, max=2147483647
+ALOAD pcHeap: constraint # = 2
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:8] : NodeSimple curr = n;
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+lazy initialization
+# heap cg registered: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..2,delta=+1,cur=-1]
+		 # garbage collection
+----------------------------------- [2] forward: 2 new
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..2,delta=+1,cur=0]
+lazy initialization
+GETFIELD pcHeap: constraint # = 3
+n_1_SYMREF.next == n_1_SYMREF &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [3] forward: 3 new end
+----------------------------------- [2] backtrack: 2
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..2,delta=+1,cur=1]
+lazy initialization
+GETFIELD pcHeap: constraint # = 3
+n_1_SYMREF.next == CONST_-1 &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [3] forward: 4 new end
+----------------------------------- [2] backtrack: 2
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..2,delta=+1,cur=2]
+lazy initialization
+New sym int n_1_SYMREF.next min=-2147483648, max=2147483647
+New sym int n_1_SYMREF.next.elem min=-2147483648, max=2147483647
+New sym int n_1_SYMREF.next.next min=-2147483648, max=2147483647
+GETFIELD pcHeap: constraint # = 5
+n_1_SYMREF.next != n_1_SYMREF &&
+n_1_SYMREF.next == CONST_1 &&
+n_1_SYMREF.next != CONST_-1 &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:11] : len++;
+            [symbolicheap/LinkedList.java:12] : if (len == 2)
+            [symbolicheap/LinkedList.java:17] : curr = curr.next;
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+lazy initialization
+# heap cg registered: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..3,delta=+1,cur=-1]
+		 # garbage collection
+----------------------------------- [3] forward: 5 new
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..3,delta=+1,cur=0]
+lazy initialization
+GETFIELD pcHeap: constraint # = 6
+n_1_SYMREF.next.next == n_1_SYMREF.next &&
+n_1_SYMREF.next != n_1_SYMREF &&
+n_1_SYMREF.next == CONST_1 &&
+n_1_SYMREF.next != CONST_-1 &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [4] forward: 6 new end
+----------------------------------- [3] backtrack: 5
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..3,delta=+1,cur=1]
+lazy initialization
+GETFIELD pcHeap: constraint # = 6
+n_1_SYMREF.next.next == n_1_SYMREF &&
+n_1_SYMREF.next != n_1_SYMREF &&
+n_1_SYMREF.next == CONST_1 &&
+n_1_SYMREF.next != CONST_-1 &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:11] : len++;
+            [symbolicheap/LinkedList.java:12] : if (len == 2)
+            [symbolicheap/LinkedList.java:14] : System.out.println("length at least 2");
+length at least 2
+            [symbolicheap/LinkedList.java:15] : break;
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [4] forward: 7 new end
+----------------------------------- [3] backtrack: 5
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..3,delta=+1,cur=2]
+lazy initialization
+GETFIELD pcHeap: constraint # = 6
+n_1_SYMREF.next.next == CONST_-1 &&
+n_1_SYMREF.next != n_1_SYMREF &&
+n_1_SYMREF.next == CONST_1 &&
+n_1_SYMREF.next != CONST_-1 &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [4] forward: 8 new end
+----------------------------------- [3] backtrack: 5
+		 # choice: gov.nasa.jpf.symbc.heap.HeapChoiceGenerator[id="?",isCascaded:false,0..3,delta=+1,cur=3]
+lazy initialization
+New sym int n_1_SYMREF.next.next min=-2147483648, max=2147483647
+New sym int n_1_SYMREF.next.next.elem min=-2147483648, max=2147483647
+New sym int n_1_SYMREF.next.next.next min=-2147483648, max=2147483647
+GETFIELD pcHeap: constraint # = 9
+n_1_SYMREF.next.next != n_1_SYMREF &&
+n_1_SYMREF.next.next != n_1_SYMREF.next &&
+n_1_SYMREF.next.next == CONST_2 &&
+n_1_SYMREF.next.next != CONST_-1 &&
+n_1_SYMREF.next != n_1_SYMREF &&
+n_1_SYMREF.next == CONST_1 &&
+n_1_SYMREF.next != CONST_-1 &&
+n_1_SYMREF == CONST_0 &&
+n_1_SYMREF != CONST_-1
+            [symbolicheap/LinkedList.java:9] : while( curr != null && curr.next != null && curr != curr.next)
+            [symbolicheap/LinkedList.java:11] : len++;
+            [symbolicheap/LinkedList.java:12] : if (len == 2)
+            [symbolicheap/LinkedList.java:14] : System.out.println("length at least 2");
+length at least 2
+            [symbolicheap/LinkedList.java:15] : break;
+            [symbolicheap/LinkedList.java:19] : }
+		 # thread terminated: main index: 0
+            [symbolicheap/LinkedList.java:3] : public class LinkedList
+		 # garbage collection
+----------------------------------- [4] forward: 9 new end
+----------------------------------- [3] backtrack: 5
+----------------------------------- [3] done: 5
+----------------------------------- [2] backtrack: 2
+----------------------------------- [2] done: 2
+----------------------------------- [1] backtrack: 0
+----------------------------------- [1] done: 0
+----------------------------------- [0] backtrack: -1
+----------------------------------- [0] done: -1
+----------------------------------- search finished
+
+====================================================== Method Summaries
+Inputs: n_1_SYMREF
+No path conditions for symbolicheap.LinkedList.test5(symbolicheap.NodeSimple@15e)
+
+====================================================== Method Summaries (HTML)
+<h1>Test Cases Generated by Symbolic JavaPath Finder for symbolicheap.LinkedList.test5 (Path Coverage) </h1>
+No path conditions for symbolicheap.LinkedList.test5(symbolicheap.NodeSimple@15e)
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+elapsed time:       00:00:02
+states:             new=10,visited=0,backtracked=10,end=7
+search:             maxDepth=4,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=3
+heap:               new=357,released=72,maxLive=350,gcCycles=10
+instructions:       3217
+max memory:         123MB
+loaded code:        classes=61,methods=1282
+
+====================================================== search finished: 10/4/22 6:23 PM

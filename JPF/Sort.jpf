@@ -1,0 +1,12 @@
+target=Sort
+classpath=${jpf-symbc}/build/examples
+sourcepath=${jpf-symbc}/src/examples
+symbolic.method = Sort.sort(con), Sort.checkSorted(con)
+symbolic.min_int=-200
+symbolic.max_int=200
+listener= gov.nasa.jpf.symbc.SymbolicListener
+listener+= ,gov.nasa.jpf.listener.ExecTracker 
+symbolic.debug = true
+et.print_src=true
+et.print_insn=false
+et.print_mth=true

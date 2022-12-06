@@ -1,0 +1,7 @@
+The chosen array size is 5. How ever, each element of the array is symbolic (not constant). The argument to the function
+'sort' and 'checkSorted' is 'con', however originally in 'main' the elements are declared as 'symbolic'. So, it's actually like
+the running of symbolic execution from behind. For, the array size 5, clearly function 'sort' is working as the assertion is 
+passed for all the array elements and no error is detected. Here, JPF tries all possible values(within the max and min range) for each
+element of the array to validate the sorting process. Length of the array is not a factor here as for length 5 if the process is
+working for all symbolic elements then for any variable length (n) array, this process will also work as during the checking process
+we are working with symbolic values not any specific concrete values. That's why this can be considered as exhaustive testing of the sort method.  
